@@ -1,4 +1,5 @@
 # coding=utf8
+from __future__ import print_function
 from twisted.internet import reactor
 from eventlet.twistedutil import block_on
 from twisted.enterprise import adbapi
@@ -10,15 +11,18 @@ SQLDB_DSN_MASTER = {
 }
 dbpool=adbapi.ConnectionPool( 'psycopg2',SQLDB_DSN_MASTER['w'], cursor_factory=psycopg2.extras.RealDictCursor)
 
-def getName(email):
-    return ( dbpool.runQuery("SELECT * FROM renhuai_user "))
 
-def printResult(result):
-    print result
+def _run_query(transaction, operation, *args, **kwargs):
+    transaction.execute(operation, *args, **kwargs)
+    return transaction.fetchall()
+
+def getName():
+    return ( block_on(dbpool.runInteraction(_run_query, "SELECT * FROM renhuai_user ")))
+
 def finish():
     dbpool.close()
     reactor.stop()
-d=getName("huangkaijie@qq.com")
-d.addCallback(printResult)
+
+print(getName())
 reactor.callLater(1, finish)
 reactor.run()
