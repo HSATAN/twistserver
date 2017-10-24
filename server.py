@@ -5,7 +5,7 @@ from twisted.web.resource import Resource
 from twisted.web.server import Site
 from database.conn import PsyBase
 import json
-
+from util.common import arg_named
 
 class Root(Resource):
 
@@ -31,7 +31,7 @@ class Auth(Resource):
     def render_GET(self, request):
         return json.dumps({"number": 999,"name": "黄开杰", "age": 25, "id": 1, "password": "123456","code": 11111})
     def render_POST(self, request):
-        phone_number = request.args.get("phone_number",None)
+        phone_number = arg_named(request, 'phone_number', None)
         if not phone_number:
             return json.dumps({"code": 20002, "msg": "参数错误"})
         print(phone_number)
