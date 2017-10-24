@@ -29,6 +29,8 @@ class Auth(Resource):
     isLeaf = True
     def render_GET(self, request):
         return json.dumps({"name": "黄开杰", "age": 25, "id": 1, "password": "123456"})
+    def render_POST(self, request):
+        return json.dumps({"name": "黄开杰", "age": 25, "id": 1, "password": "123456"})
 class UserInfo(Resource):
     isLeaf = True
     def render_GET(self, request):
