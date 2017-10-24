@@ -35,5 +35,3 @@ class PsyBase():
                                                                                                                   intro)
         print(sql)
         return  cls.run_operation(sql)
-
-print(PsyBase.insert_user())
