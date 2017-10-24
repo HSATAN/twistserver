@@ -26,7 +26,8 @@ class App(Resource):
 class UserInfo(Resource):
     isLeaf = True
     def render_GET(self, request):
-        return {""}
+
+        return {"name": "黄开杰", "age": 25, "id": 1, "password": "123456"}
 
 class third(Resource):
 
