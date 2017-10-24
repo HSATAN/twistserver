@@ -8,17 +8,25 @@ class Root(Resource):
 
     def __init__(self):
         Resource.__init__(self)
-        self.putChild("ajax",App())
+        self.putChild("ajax", App())
+
+
 
 
 class App(Resource):
 
-    #isLeaf = True
     def __init__(self):
         Resource.__init__(self)
         self.putChild("third", third())
+        self.putChild("userinfo",)
+
     def render_GET(self, request):
         return "huangkaijie"
+
+class UserInfo(Resource):
+    isLeaf = True
+    def render_GET(self, request):
+        return {""}
 
 class third(Resource):
 
