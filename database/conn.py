@@ -13,12 +13,20 @@ class PsyBase():
 
     @classmethod
     def fetch_one(cls,operation):
-        cls.cursor.execute(operation)
-        return cls.cursor.fetchone()
+        try:
+            cls.cursor.execute(operation)
+            return cls.cursor.fetchone()
+        except Exception as e:
+            print(e)
+            return None
     @classmethod
     def run_operation(cls,operation):
-        cls.cursor.execute(operation)
-        return cls.conn.commit()
+        try:
+            cls.cursor.execute(operation)
+            return cls.conn.commit()
+        except Exception as e:
+            print(e)
+            return None
     @classmethod
     def find_user(cls, phone_number=None):
         if not phone_number:
