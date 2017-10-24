@@ -3,6 +3,8 @@
 from twisted.internet import reactor
 from twisted.web.resource import Resource
 from twisted.web.server import Site
+import json
+
 
 class Root(Resource):
 
@@ -27,7 +29,7 @@ class UserInfo(Resource):
     isLeaf = True
     def render_GET(self, request):
 
-        return {"name": "黄开杰", "age": 25, "id": 1, "password": "123456"}
+        return json.dumps({"name": "黄开杰", "age": 25, "id": 1, "password": "123456"})
 
 class third(Resource):
 
