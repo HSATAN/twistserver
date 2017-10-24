@@ -1,7 +1,7 @@
 # coding=utf8
 from __future__ import print_function
 from twisted.internet import reactor
-from eventlet.twistedutil import block_on
+#from eventlet.twistedutil import block_on
 from twisted.enterprise import adbapi
 import psycopg2
 import psycopg2.extras
@@ -17,7 +17,7 @@ def _run_query(transaction, operation, *args, **kwargs):
     return transaction.fetchall()
 
 def getName():
-    return ( block_on(dbpool.runInteraction(_run_query, "SELECT * FROM renhuai_user ")))
+    return ( (dbpool.runInteraction(_run_query, "SELECT * FROM renhuai_user ")))
 
 def finish():
     dbpool.close()
