@@ -21,4 +21,3 @@ class PsyBase():
             return {"code":20002,"msg": "参数错误"}
         user = cls.fetch_one("select * from renhuai_user where phone_number=%s" %phone_number)
         return user
-print(PsyBase.find_user(15326666235))
