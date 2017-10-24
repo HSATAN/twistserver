@@ -18,7 +18,7 @@ class App(Resource):
     def __init__(self):
         Resource.__init__(self)
         self.putChild("third", third())
-        self.putChild("userinfo",)
+        self.putChild("userinfo", UserInfo())
 
     def render_GET(self, request):
         return "huangkaijie"
