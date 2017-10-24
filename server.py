@@ -31,11 +31,12 @@ class Auth(Resource):
     def render_GET(self, request):
         return json.dumps({"number": 999,"name": "黄开杰", "age": 25, "id": 1, "password": "123456","code": 11111})
     def render_POST(self, request):
-        phone_number = request.args.get("phone_number",0)
+        phone_number = request.args.get("phone_number",None)
+        if not phone_number:
+            return json.dumps({"code": 20002, "msg": "参数错误"})
         print(phone_number)
         try:
-            if not phone_number:
-                return  json.dumps({"code":20002,"msg": "参数错误"})
+
             user = PsyBase.find_user(phone_number)
             if not user:
                 return  json.dumps({"code": 20003, "msg": "用户未找到"})
