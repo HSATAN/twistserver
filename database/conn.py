@@ -25,6 +25,7 @@ class PsyBase():
             cls.cursor.execute(operation)
             return cls.conn.commit()
         except Exception as e:
+            cls.conn.rollback()
             print(e)
             return None
     @classmethod
