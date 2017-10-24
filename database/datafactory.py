@@ -19,10 +19,5 @@ def _run_query(transaction, operation, *args, **kwargs):
 def getName():
     return ( (dbpool.runInteraction(_run_query, "SELECT * FROM renhuai_user ")))
 
-def finish():
-    dbpool.close()
-    reactor.stop()
-
 print(getName())
-reactor.callLater(1, finish)
 reactor.run()
