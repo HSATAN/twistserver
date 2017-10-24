@@ -23,6 +23,7 @@ class App(Resource):
         self.putChild("third", third())
         self.putChild("userinfo", UserInfo())
         self.putChild("auth", Auth())
+        self.putChild("register", Register())
     def render_GET(self, request):
         return "huangkaijie"
 
@@ -44,6 +45,26 @@ class Auth(Resource):
         except Exception as e:
             print(e)
             return  json.dumps({"code":2004,"msg": "服务器错误"})
+
+class Register(Resource):
+
+    isLeaf = True
+    def render_POST(self, request):
+        phone_number = arg_named(request, 'phone_number', 0)
+        password = arg_named(request, "password", None)
+        name = arg_named(request, "name", None)
+
+        if  phone_number == 0 or password is None or name is None:
+            return json.dumps({"code": 20002, "msg": "参数错误"})
+        try:
+
+            user = PsyBase.insert_user(phone_number=phone_number,name=name,password=password)
+            return json.dumps({"phone_number": 999,"name": name, "age": 25, "id": 1, "password": password,"code": 10000})
+        except Exception as e:
+            print(e)
+            return  json.dumps({"code":2006,"msg": "注册失败"})
+
+
 class UserInfo(Resource):
     isLeaf = True
     def render_GET(self, request):
