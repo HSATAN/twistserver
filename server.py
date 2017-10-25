@@ -40,7 +40,9 @@ class Auth(Resource):
             user = PsyBase.find_user(phone_number)
             if not user:
                 return  json.dumps({"code": 20003, "msg": "用户未找到"})
-            return json.dumps({"phone_number": phone_number, "name": "黄开杰", "age": 25, "id": 1, "password": "123456","code": 10000})
+            return json.dumps({"phone_number": phone_number, "name": user['name'],
+                               'intro': user['intro'],
+                               "age": user['age'], "id": user['id'], "password": "123456","code": 10000})
         except Exception as e:
             print(e)
             return  json.dumps({"code":2004,"msg": "服务器错误"})
