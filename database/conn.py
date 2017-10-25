@@ -27,7 +27,7 @@ class PsyBase():
         except Exception as e:
             cls.conn.rollback()
             print(e)
-            return None
+            return 20007
     @classmethod
     def find_user(cls, phone_number=None):
         if not phone_number:

@@ -29,8 +29,7 @@ class App(Resource):
 
 class Auth(Resource):
     isLeaf = True
-    def render_GET(self, request):
-        return json.dumps({"number": 999,"name": "黄开杰", "age": 25, "id": 1, "password": "123456","code": 11111})
+
     def render_POST(self, request):
         phone_number = arg_named(request, 'phone_number', 0)
         if  phone_number == 0:
@@ -57,10 +56,8 @@ class Register(Resource):
         if  phone_number == 0 or password is None or name is None:
             return json.dumps({"code": 20002, "msg": "参数错误"})
         try:
-
-            user = PsyBase.insert_user(phone_number=phone_number,name=name,password=password)
             #return json.dumps({"phone_number": phone_number,"name": name, "age": 25, "id": 1, "password": password,"code": 10000})
-            return '10000'
+            return PsyBase.insert_user(phone_number=phone_number,name=name,password=password)
         except Exception as e:
             print(e)
             return  json.dumps({"code":2006,"msg": "注册失败"})
