@@ -5,6 +5,7 @@ from twisted.web.resource import Resource
 from twisted.web.server import Site
 from database.conn import PsyBase
 import json
+import re
 from util.common import arg_named
 
 class Root(Resource):
@@ -57,9 +58,12 @@ class Register(Resource):
 
         if  phone_number == 0 or password is None or name is None:
             return json.dumps({"code": 20002, "msg": "参数错误"})
+        if str(phone_number) != 11:
+            return json.dumps({"code": 20008,"msg": "手机号码不符合格式"})
         try:
             #return json.dumps({"phone_number": phone_number,"name": name, "age": 25, "id": 1, "password": password,"code": 10000})
             return PsyBase.insert_user(phone_number=phone_number,name=name,password=password)
+
         except Exception as e:
             print(e)
             return  json.dumps({"code":2006,"msg": "注册失败"})
