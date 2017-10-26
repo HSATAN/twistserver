@@ -64,7 +64,7 @@ class Register(Resource):
             #return json.dumps({"phone_number": phone_number,"name": name, "age": 25, "id": 1, "password": password,"code": 10000})
             code = PsyBase.insert_user(phone_number=phone_number,name=name,password=password)
             print(code)
-            return json.dumps({"code": code })
+            return str(code)
 
         except Exception as e:
             print(e)
