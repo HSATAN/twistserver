@@ -23,7 +23,8 @@ class PsyBase():
     def run_operation(cls,operation):
         try:
             cls.cursor.execute(operation)
-            return cls.conn.commit()
+            cls.conn.commit()
+            return 10000
         except Exception as e:
             cls.conn.rollback()
             print(e)
@@ -43,4 +44,7 @@ class PsyBase():
                                                                                                                   name,
                                                                                                                   intro)
         print(sql)
-        return  cls.run_operation(sql)
+        code = cls.run_operation(sql)
+        if code != 2007:
+            return 10000
+        return 2007
