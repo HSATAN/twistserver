@@ -62,7 +62,7 @@ class Register(Resource):
             return json.dumps({"code": 20008,"msg": "手机号码不符合格式"})
         try:
             #return json.dumps({"phone_number": phone_number,"name": name, "age": 25, "id": 1, "password": password,"code": 10000})
-            return PsyBase.insert_user(phone_number=phone_number,name=name,password=password)
+            return json.dumps({"code": PsyBase.insert_user(phone_number=phone_number,name=name,password=password)})
 
         except Exception as e:
             print(e)
