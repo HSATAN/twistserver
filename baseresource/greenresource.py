@@ -15,17 +15,17 @@ class BaseResource(Resource):
 
     @pre_handle_decotor
     def render_HEAD(self, request):
-        self.real_HEAD(request)
+        return self.real_HEAD(request)
         pass
 
     @pre_handle_decotor
     def render_GET(self, request):
-        self.real_GET(request)
+        return self.real_GET(request)
         pass
 
     @pre_handle_decotor
     def render_POST(self, request):
-        self.real_POST(request)
+        return self.real_POST(request)
         pass
 
     @pre_handle_decotor
