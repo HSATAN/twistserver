@@ -6,7 +6,7 @@ def pre_handle_decotor(func):
     def handler(*args, **kwargs):
         print(*args)
         print(**kwargs)
-        return func(*kwargs, **kwargs)
+        return func(*args, **kwargs)
     return handler
 
 
