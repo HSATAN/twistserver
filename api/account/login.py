@@ -7,5 +7,5 @@ class Login(BaseResource):
         BaseResource.__init__(self)
 
     def real_GET(self, request):
-        return "你被装饰器先处理过了"
+        return bytes("你被装饰器先处理过了", encoding='utf8')
     pass
