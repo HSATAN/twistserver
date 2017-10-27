@@ -6,6 +6,7 @@ def pre_handle_decotor(func):
     def handler(*args, **kwargs):
         print(args)
         print(dir(args[1]))
+        print(args[1].getClientIP())
         print(**kwargs)
         return func(*args, **kwargs)
     return handler
