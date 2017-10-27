@@ -1,6 +1,6 @@
 # _*_ coding:utf-8 _*_
 
-from api.account.login import Login
+from account.login import Login
 from baseresource.greenresource import BaseResource
 class Api(BaseResource):
 
