@@ -7,7 +7,7 @@ from config import errorcode
 def ban_user():
 
 
-    return json.dumps({"code": errorcode.TYPES.BAN})
+    return json.dumps({"code": errorcode.TYPES.BAN,"msg":"对不起，由于你操作异常，我们暂时不能为你提供服务"})
 
 
 
