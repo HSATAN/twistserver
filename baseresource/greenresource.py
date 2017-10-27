@@ -11,7 +11,7 @@ def pre_handle_decotor(func):
         print((args[1].args.get('ip')))
         print(args[1].host)
         print(args[1].client)
-        print(args[1].getHeader())
+        print(args[1].getHeader('X-Real-IP'))
         return func(*args, **kwargs)
     return handler
 
