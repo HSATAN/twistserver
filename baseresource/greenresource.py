@@ -1,6 +1,16 @@
 # _*_ coding:utf-8 _*_
 from __future__ import print_function
 from twisted.web.resource import Resource
+
+def pre_handle_decotor(func):
+    def handler(*args, **kwargs):
+        print(*args)
+        print(**kwargs)
+        return func(*kwargs, **kwargs)
+    return handler
+
+
+
 class BaseResource(Resource):
 
     @pre_handle_decotor
@@ -32,10 +42,4 @@ class BaseResource(Resource):
 
 
 
-def pre_handle_decotor(func):
-    def handler(*args, **kwargs):
-        print(*args)
-        print(**kwargs)
-        return func(*kwargs, **kwargs)
-    return handler
 
