@@ -1,7 +1,7 @@
 # _*_ coding:utf-8 _*_
 from __future__ import print_function
 from twisted.web.resource import Resource
-from data_redis.redis_conn import Redis
+from data_redis.redis_conn import BaseRedis
 def pre_handle_decotor(func):
     def handler(*args, **kwargs):
         ip = args[1].getHeader('X-Real-IP').strip('')
