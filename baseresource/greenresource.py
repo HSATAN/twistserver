@@ -4,7 +4,7 @@ from twisted.web.resource import Resource
 
 def pre_handle_decotor(func):
     def handler(*args, **kwargs):
-        print(*args)
+        print(args)
         print(**kwargs)
         return func(*args, **kwargs)
     return handler
