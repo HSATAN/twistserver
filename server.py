@@ -5,14 +5,16 @@ from twisted.web.resource import Resource
 from twisted.web.server import Site
 from database.conn import PsyBase
 import json
+import config
 import re
 from util.common import arg_named
-
+from api.api import Api
 class Root(Resource):
 
     def __init__(self):
         Resource.__init__(self)
         self.putChild("ajax", App())
+        self.putChild("api", Api())
 
 
 
