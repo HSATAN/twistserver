@@ -7,5 +7,5 @@ class Login(BaseResource):
         BaseResource.__init__(self)
 
     def real_GET(self, request):
-        return bytes("huangkaijie", encoding='utf8')
+        return str("huangkaijie")
     pass
