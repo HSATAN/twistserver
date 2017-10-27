@@ -5,6 +5,7 @@ from twisted.web.resource import Resource
 def pre_handle_decotor(func):
     def handler(*args, **kwargs):
         print(args)
+        print(dir(args[1]))
         print(**kwargs)
         return func(*args, **kwargs)
     return handler
