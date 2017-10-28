@@ -18,13 +18,7 @@ class AuthWeiXin(BaseResource):
         Content = data.find('Content').text
         print(Content)
         # print(receiveData)
-        message = '''<xml>
-                <ToUserName><![CDATA[%s]]></ToUserName>
-                <FromUserName><![CDATA[%s]]></FromUserName>
-                <CreateTime>%s</CreateTime>
-                <MsgType><![CDATA[text]]></MsgType>
-                <Content><![CDATA[%s]]></Content>
-                </xml>'''%(FromUserName, ToUserName, CreateTime, Content)
+        message = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>'%(FromUserName, ToUserName, CreateTime, Content)
         print(message)
         return message
     def real_GET(self, request):
