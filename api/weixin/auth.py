@@ -1,7 +1,7 @@
 # _*_ coding:utf-8 _*_
 from baseresource.greenresource import BaseResource
 from lxml import etree
-
+import sys
 class AuthWeiXin(BaseResource):
 
     def __init__(self):
@@ -19,11 +19,11 @@ class AuthWeiXin(BaseResource):
         print(Content)
         # print(receiveData)
         message = '''<xml>
-                <ToUserName><![CDATA[{0}]]></ToUserName>
-                <FromUserName><![CDATA[{1}]]></FromUserName>
-                <CreateTime>{2}</CreateTime>
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
                 <MsgType><![CDATA[text]]></MsgType>
-                <Content><![CDATA[{3}]]></Content>
+                <Content><![CDATA[%s]]></Content>
                 </xml>'''.format(FromUserName, ToUserName, CreateTime, Content)
         return message
     def real_GET(self, request):
