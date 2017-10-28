@@ -18,10 +18,10 @@ from api.weixin.auth import AuthWeiXin
 back_data = "你好"
 with open('honglou.txt') as f:
     data = f.read()
-    data = data.split('\n')
+    data = data.split('　　')
     back_data = list(set(data))
-print(back_data[0])
-print(back_data[3])
+    back_data.remove('')
+print("-----------服务器启动")
 
 class Root(Resource):
 
