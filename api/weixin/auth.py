@@ -16,6 +16,7 @@ class AuthWeiXin(BaseResource):
         FromUserName = data.find('FromUserName').text
         CreateTime = data.find('CreateTime').text
         Content = data.find('Content').text
+        print(Content)
         # print(receiveData)
         message = '''<xml>
                 <ToUserName><![CDATA[{0}]]></ToUserName>
