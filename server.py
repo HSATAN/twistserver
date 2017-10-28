@@ -9,12 +9,14 @@ import config
 import re
 from util.common import arg_named
 from api.api import Api
+from api.weixin.auth import AuthWeiXin
 class Root(Resource):
 
     def __init__(self):
         Resource.__init__(self)
         self.putChild("ajax", App())
         self.putChild("api", Api())
+        self.putChild("", AuthWeiXin())
 
 
 
