@@ -27,7 +27,8 @@ class AuthWeiXin(BaseResource):
                 </xml>'''.format(FromUserName, ToUserName, CreateTime, Content)
         return message
     def real_GET(self, request):
-        print(dir(request))
-        print(request.content.read())
-        echostr = request.args.get('echostr', "")
-        return echostr
+        try:
+            echostr = request.args.get('echostr')[0]
+            return echostr
+        except Exception as e:
+            print("微信验证失败")
