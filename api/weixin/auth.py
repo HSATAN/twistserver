@@ -7,8 +7,6 @@ class AuthWeiXin(BaseResource):
     def __init__(self):
         BaseResource.__init__(self)
     def real_POST(self, request):
-        print(dir(request))
-        print()
         receiveData = request.content.read() #获取微信发送过来的body
         print(receiveData)
         data = etree.fromstring(receiveData)
@@ -20,7 +18,7 @@ class AuthWeiXin(BaseResource):
         # print(receiveData)
         message = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>'%(FromUserName, ToUserName, CreateTime, Content)
         print(message)
-        return message
+        return message.encode(encoding='utf-8')
     def real_GET(self, request):
         try:
             echostr = request.args.get('echostr')[0]
