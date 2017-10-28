@@ -24,7 +24,7 @@ class AuthWeiXin(BaseResource):
                 <CreateTime>%s</CreateTime>
                 <MsgType><![CDATA[text]]></MsgType>
                 <Content><![CDATA[%s]]></Content>
-                </xml>'''.format(FromUserName, ToUserName, CreateTime, Content)
+                </xml>'''%(FromUserName, ToUserName, CreateTime, Content)
         print(message)
         return message
     def real_GET(self, request):
