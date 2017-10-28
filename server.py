@@ -1,5 +1,9 @@
 # _*_ coding:utf-8 _*_
+
 from __future__ import print_function
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from twisted.internet import reactor
 from twisted.web.resource import Resource
 from twisted.web.server import Site
@@ -10,13 +14,22 @@ import re
 from util.common import arg_named
 from api.api import Api
 from api.weixin.auth import AuthWeiXin
+
+back_data = "你好"
+with open('honglou.txt') as f:
+    data = f.read()
+    data = data.split('\n')
+    back_data = list(set(data))
+print(back_data[0])
+print(back_data[3])
+
 class Root(Resource):
 
     def __init__(self):
         Resource.__init__(self)
         self.putChild("ajax", App())
         self.putChild("api", Api())
-        self.putChild("", AuthWeiXin())
+        self.putChild("", AuthWeiXin(back_data))
 
 
 
