@@ -32,3 +32,4 @@ class AuthWeiXin(BaseResource):
             return echostr
         except Exception as e:
             print("微信验证失败")
+        return "非法访问"
