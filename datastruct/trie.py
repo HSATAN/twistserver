@@ -38,7 +38,20 @@ class Trie(object):
             mid[line[i]] = temp
             temp = mid
         return mid
-
+    @classmethod
+    def parse(cls, line):
+        temp = cls.trie_dict
+        for word in line:
+            if temp == 1:
+                del temp
+                return False
+            if word in temp:
+                temp = temp[word]
+            else:
+                del temp
+                return False
+        del temp
+        return True
 if __name__ == '__main__':
     le = 0
     try:
@@ -64,8 +77,28 @@ if __name__ == '__main__':
 
 line = raw_input("请输入要解析的语句> ")
 while line != 'quit':
+    result_lenth = 0 # 解析出的单词的长度
+    word_lenth = 4  # 最长匹配的长度
     line = line.strip('\n').decode(encoding='utf8')
     line_lenth = len(line)
-    print(line_lenth)
+    start = line_lenth-word_lenth
+    end = line_lenth
+    if start < 0:
+        start = 0
+    find_flag = 0
+    while end > 0:
+        find_flag = 0
+        for i in range(start, end):
+            if Trie.parse(line[i:end]):
+                print(line[i:end])
+                end = i
+                start = end - word_lenth
+                if start < 0:
+                    start = 0
+                find_flag = 1
+                break
+        if find_flag == 0:
+            end -= 1
+            start = (start - 1) if start>0 else 0
+
     line = raw_input("请输入要解析的语句> ")
-    pass
