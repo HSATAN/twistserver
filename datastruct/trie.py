@@ -12,7 +12,7 @@ class Trie(object):
     trie_dict = defaultdict(dict)
 
     @classmethod
-    def create_trie(cls,final_dict, temp_dict):
+    def create_trie(cls, final_dict, temp_dict):
 
         if temp_dict.keys()[0] not in final_dict:
             final_dict[temp_dict.keys()[0]]  = temp_dict[temp_dict.keys()[0]]
@@ -25,6 +25,7 @@ class Trie(object):
                 return final_dict
             final_dict = cls.create_trie(final_dict[temp_dict.keys()[0]], temp_dict[temp_dict.keys()[0]])
         return final_dict
+
     @classmethod
     def create_dict(cls, line=""):
         temp = {}
@@ -57,6 +58,7 @@ if __name__ == '__main__':
     try:
         f = open('model.txt')
         Trie.trie_dict = json.load(f)
+        print('加载模型成功')
     except:
         print("加载模型失败,重新生成模型")
         i = 0
