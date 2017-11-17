@@ -38,3 +38,14 @@ class MysqlDB(object):
     @classmethod
     def rollback(cls):
         cls.conn.rollback()
+
+    @classmethod
+    def run_query(cls, operate):
+
+        cls.cursor.execute(operate)
+        return cls.cursor.fetchall()
+
+    @classmethod
+    def query_all(cls, operate):
+        cls.cursor.execute(operate)
+        return cls.cursor.fetchall()
