@@ -11,7 +11,7 @@
     }
     .div2{
         text-align: center;
-        height: 300px;
+        height: 30px;
         margin:0 auto;
     }
 
@@ -19,14 +19,15 @@
 <script src="/static/js/search.js">
 </script>
 <div class="div2"></div>
-<div class="div3">
-<form id="form" name="f" class="fm" onsubmit="return load_document()">
+<div class="div1">
+<form id="form" name="f" class="fm"  onsubmit="return false">
     <input type="hidden" name="ie" value="utf-8">
-    <input id="kw" name="word" class="s_ipt" value="" maxlength="255" autocomplete="off">
-    <input type="submit" id="su" value="搜索测试" class="bg s_btn">
+    <input style="width: 300px" id="kw" name="word" class="s_ipt" value="" maxlength="255" autocomplete="off">
+    <input  type="submit" id="su" value="搜索测试" class="bg s_btn" onclick=" return load_document()">
 
 </form>
     </div>
+
 <div id="result"></div>
 </body>
 </html>
