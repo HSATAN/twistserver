@@ -11,7 +11,7 @@ from database.conn import PsyBase
 import json
 import config
 import re
-from serch.serch import Serch
+from serch.serch import Serch, StaticFile
 from util.common import arg_named
 from api.api import Api
 from api.weixin.auth import AuthWeiXin
@@ -31,7 +31,8 @@ class Root(Resource):
         self.putChild("ajax", App())
         self.putChild("api", Api())
         self.putChild("", AuthWeiXin(back_data))
-        self.putChild("serch", Serch())
+        self.putChild("search", Serch())
+        self.putChild("static", StaticFile())
 
 
 
@@ -105,7 +106,7 @@ class UserInfo(Resource):
                                "age": user['age'], "id": user['id'], "password": "123456","code": 10000})
         except Exception as e:
             print(e)
-            return  json.dumps({"code":2004,"msg": "服务器错误"})
+            return  json.dumps({"code": 2004, "msg": "服务器错误"})
 
 class third(Resource):
 

@@ -10,7 +10,16 @@ class Serch(BaseResource):
 
         word = arg_named(request, 'word')
         if not word:
-            with open("static/serch.html") as f:
+            with open("static/html/serch.html") as f:
                 return f.read()
         else:
             return "这是搜索结果"
+
+
+class StaticFile(BaseResource):
+
+    isLeaf = True
+
+    def real_GET(self, request):
+        with open("static/js/search.js") as f:
+            return f.read()
