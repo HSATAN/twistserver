@@ -25,5 +25,5 @@ with open('/Users/huangkaijie/userdetect/signin.txt') as signin:
 
 in_dict_ip = sorted(in_dict_ip.items(), key=lambda values: values[1]['time'], reverse=True)
 in_dict_device = sorted(in_dict_device.items(), key=lambda value:value[1],reverse=True)
-print(in_dict_ip)
+print(in_dict_ip[:200])
 

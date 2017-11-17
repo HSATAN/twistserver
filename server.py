@@ -11,6 +11,7 @@ from database.conn import PsyBase
 import json
 import config
 import re
+from serch.serch import Serch
 from util.common import arg_named
 from api.api import Api
 from api.weixin.auth import AuthWeiXin
@@ -30,6 +31,7 @@ class Root(Resource):
         self.putChild("ajax", App())
         self.putChild("api", Api())
         self.putChild("", AuthWeiXin(back_data))
+        self.putChild("serch", Serch())
 
 
 

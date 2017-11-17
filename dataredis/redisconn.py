@@ -3,11 +3,11 @@ import redis
 
 class BaseRedis():
 
-    r = redis.Redis(host='47.93.5.189',db=0)
+    r = redis.Redis(host='47.93.5.189', db=0)
     @classmethod
     def reopen(cls):
         try:
-            cls.r = redis.Redis(host='47.93.5.189',db=0)
+            cls.r = redis.Redis(host='47.93.5.189', db=0)
         except Exception as e:
             print(e)
 

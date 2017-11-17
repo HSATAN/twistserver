@@ -56,6 +56,7 @@ class Trie(object):
     @classmethod
     def parse_query(cls, line):
         result_lenth = 0  # 解析出的单词的长度
+        new_word = ""
         word_lenth = 4  # 最长匹配的长度
         line = line.strip('\n').decode(encoding='utf8')
         line_lenth = len(line)
@@ -75,6 +76,7 @@ class Trie(object):
                         start = 0
                     find_flag = 1
                     break
+
             if find_flag == 0:
                 end -= 1
                 start = (start - 1) if start > 0 else 0

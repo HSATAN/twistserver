@@ -47,15 +47,12 @@ class BaseResource(Resource):
         return self.real_POST(request)
         pass
 
-    @pre_handle_decotor
     def real_HEAD(self, request):
         pass
 
-    @pre_handle_decotor
     def real_GET(self, request):
         pass
 
-    @pre_handle_decotor
     def real_POST(self, request):
         pass
 
