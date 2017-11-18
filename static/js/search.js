@@ -9,6 +9,7 @@ function load_document() {
         {
             if(xmlhttp.status==200)
             {
+                $("#result").html("")
                 data = JSON.parse(xmlhttp.responseText);
                 data.forEach(function (item,index,array) {
 
