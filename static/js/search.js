@@ -1,5 +1,7 @@
+url = ""
+
 function load_document() {
-    alert("--------------------------------")
+    word = form.word.value
     var xmlhttp;
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange=function () {
@@ -7,12 +9,20 @@ function load_document() {
         {
             if(xmlhttp.status==200)
             {
-                alert("加载完成")
-                        document.getElementById("result").innerText="ceshi"
+                data = JSON.parse(xmlhttp.responseText);
+                data.forEach(function (item,index,array) {
+
+                    $("#result").append( "<a href=" + item['url'] + ' target="_blank">' + item['url'] + "</a><br>");
+
+                })
+
+
 
             }
         }
     };
-    xmlhttp.open("GET","/search?word=huagnkaijie",false);
+    xmlhttp.open("GET","/search?word=" + word,false);
     xmlhttp.send(null);
 }
+
+

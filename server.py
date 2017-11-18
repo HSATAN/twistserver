@@ -11,7 +11,7 @@ from database.conn import PsyBase
 import json
 import config
 import re
-from serch.serch import Serch, StaticFile
+from serch.serch import Serch, StaticFile, Logo
 from util.common import arg_named
 from api.api import Api
 from api.weixin.auth import AuthWeiXin
@@ -33,6 +33,7 @@ class Root(Resource):
         self.putChild("", AuthWeiXin(back_data))
         self.putChild("search", Serch())
         self.putChild("static", StaticFile())
+        self.putChild("logo", Logo())
 
 
 

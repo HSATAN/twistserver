@@ -2,6 +2,8 @@
 from baseresource.greenresource import BaseResource
 from util.common import arg_named
 from twisted.web.static import File
+from database.mysqldb import MysqlDB
+import json
 
 
 class Serch(BaseResource):
@@ -13,9 +15,22 @@ class Serch(BaseResource):
             with open("static/html/serch.html") as f:
                 return f.read()
         else:
-            return "这是搜索结果"
+            print(word)
+            result = MysqlDB.run_query("select url from document limit 10")
+            data = []
 
+            for url in result:
+                item = {}
+                item['url'] = url['url'].strip('"').strip('/')
+                data.append(item)
+            return json.dumps(data)
 
+class Logo(BaseResource):
+
+    isLeaf = True
+    def real_GET(self, request):
+        with open('static/logo.jpg', 'rb') as f:
+            return f.read()
 class StaticFile(BaseResource):
 
     isLeaf = True
