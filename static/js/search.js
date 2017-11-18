@@ -12,7 +12,7 @@ function load_document() {
                 data = JSON.parse(xmlhttp.responseText);
                 data.forEach(function (item,index,array) {
 
-                    $("#result").append( "<a href=" + item['url'] + ' target="_blank">' + item['url'] + "</a><br>");
+                    $("#result").append( "<a  class='item' href=" + item['url'] + ' target="_blank">' + item['url'] + "</a><br>");
 
                 })
 
@@ -21,7 +21,7 @@ function load_document() {
             }
         }
     };
-    xmlhttp.open("GET","/search?word=" + word,false);
+    xmlhttp.open("GET","/search?word=" + word,true);
     xmlhttp.send(null);
 }
 

@@ -15,8 +15,7 @@ class Serch(BaseResource):
             with open("static/html/serch.html") as f:
                 return f.read()
         else:
-            print(word)
-            result = MysqlDB.run_query("select url from document limit 10")
+            result = MysqlDB.run_query('select * from document where html like  "%%%s%%" limit 10' % word)
             data = []
 
             for url in result:
