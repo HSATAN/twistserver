@@ -41,9 +41,12 @@ class MysqlDB(object):
 
     @classmethod
     def run_query(cls, operate):
-
-        cls.cursor.execute(operate)
-        return cls.cursor.fetchall()
+        try:
+            cls.cursor.execute(operate)
+            return cls.cursor.fetchall()
+        except Exception as e:
+            logging.error(e)
+            return None
 
     @classmethod
     def query_all(cls, operate):

@@ -4,7 +4,7 @@ from util.common import arg_named
 from twisted.web.static import File
 from database.mysqldb import MysqlDB
 import json
-
+import logging
 
 class Serch(BaseResource):
 
@@ -12,12 +12,15 @@ class Serch(BaseResource):
 
         word = arg_named(request, 'word')
         if not word:
+            logging.info("访问搜索首页")
             with open("static/html/serch.html") as f:
                 return f.read()
         else:
-            result = MysqlDB.run_query('select * from document where html like  "%%%s%%" limit 10' % word)
+            logging.info("搜索关键词为:%s" %word)
+            result = MysqlDB.run_query('select * from document where html like  "%%%s%%" limit 10 52' % word)
             data = []
-
+            if not result:
+                return json.dumps([])
             for url in result:
                 item = {}
                 item['url'] = url['url'].strip('"').strip('/')

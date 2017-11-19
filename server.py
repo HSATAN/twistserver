@@ -10,6 +10,7 @@ from twisted.web.server import Site
 from database.conn import PsyBase
 import json
 import config
+import logging
 import re
 from serch.serch import Serch, StaticFile, Logo
 from util.common import arg_named
@@ -115,5 +116,14 @@ class third(Resource):
         return "third"
 
 if __name__ == '__main__':
+    logfile = 'log'
+    try:
+        import platform
+        if platform.system().lower() != 'windows':
+            logfile = '/home/log/twistserverlog/log'
+    except:
+        pass
+    formats = '[%(asctime)s] [%(filename)s L%(lineno)d] [%(levelname)s] %(message)s'
+    logging.basicConfig(level=logging.INFO, format=formats, filename="log")
     reactor.listenTCP(8888, Site(Root()))
     reactor.run()
