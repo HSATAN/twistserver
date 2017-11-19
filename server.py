@@ -124,6 +124,6 @@ if __name__ == '__main__':
     except:
         pass
     formats = '[%(asctime)s] [%(filename)s L%(lineno)d] [%(levelname)s] %(message)s'
-    logging.basicConfig(level=logging.INFO, format=formats, filename="log")
+    logging.basicConfig(level=logging.INFO, format=formats, filename=logfile)
     reactor.listenTCP(8888, Site(Root()))
     reactor.run()
