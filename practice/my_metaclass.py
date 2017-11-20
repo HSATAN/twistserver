@@ -1,5 +1,5 @@
 # _*_ coding:utf-8 _*_
-
+from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
 def choose_class(classname=None, parent=(),attr={}):
     attrs = ((name, value) for name, value in attr.items() if not name.startswith('__'))
     uppersttrs = dict((name.upper(), value) for name, value in attrs)
