@@ -2,7 +2,12 @@
 
 
 """
-用发音规则编码英文单词，进而进行编写纠错
+计算编辑距离，找出拼写错误
+
+
+
+
+用发音规则编码英文单词，进而进行编写纠错：编码的目的是减少比较的词汇，加快速度
 
 编码规则
 1:保留第一个字母（用大写字母）
@@ -62,4 +67,8 @@ def soundex(word=None):
     elif len(word) == 3:
         word += '0'
     return word
-print(soundex('poiner'))
+
+word = raw_input(">>>>>")
+while word != 'quit':
+    print(soundex(word))
+    word = raw_input(">>>>>")
