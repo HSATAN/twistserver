@@ -11,6 +11,7 @@ function load_document() {
             {
                 $("#result").html("")
                 data = JSON.parse(xmlhttp.responseText);
+                $("#result").value = "";
                 data.forEach(function (item,index,array) {
 
                     $("#result").append( "<a  class='item' href=" + item['url'] + ' target="_blank">' + item['url'] + "</a><br>");

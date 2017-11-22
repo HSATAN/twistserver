@@ -33,4 +33,12 @@ class UpperAttr(object):
         return "nihao"
 
 ins = UpperAttr()
-
+data = ['this is the first document',
+        'this is the second document']
+vectorizer = CountVectorizer()
+tfidftra = TfidfTransformer()
+X = vectorizer.fit_transform(data)
+tfidf = tfidftra.fit_transform(X)
+print(X)
+print(vectorizer.get_feature_names())
+print(tfidf)

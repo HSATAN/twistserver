@@ -17,7 +17,9 @@ class Serch(BaseResource):
                 return f.read()
         else:
             logging.info("搜索关键词为:%s" %word)
-            result = MysqlDB.run_query('select * from document where html like  "%%%s%%" limit 10' % word)
+            sql_full_index = 'SELECT * from document WHERE MATCH(html) AGAINST ("%s" in NATURAL LANGUAGE MODE)' % word
+            sql = 'select * from document where html like  "%%%s%%" limit 10' % word
+            result = MysqlDB.run_query(sql)
             data = []
             if not result:
                 return json.dumps([])
