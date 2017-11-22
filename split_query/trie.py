@@ -87,10 +87,11 @@ class Trie(object):
 
             le = 0
             try:
-                f = open('model.txt')
+                f = open('twistserver/split_query/model.txt')
                 Trie.trie_dict = json.load(f)
                 print('加载模型成功')
-            except:
+            except Exception as e:
+                print(e)
                 print("加载模型失败,重新生成模型")
                 i = 0
                 with open('H:\\sougoudata\\new_sougou.txt') as f:
@@ -107,6 +108,8 @@ class Trie(object):
                     with open('model.txt', 'w') as f:
                         f.write(json.dumps(Trie.trie_dict))
 Trie.load_model()
-line = raw_input("请输入要解析的语句> ")
-Trie.parse_query(line)
-line = raw_input("请输入要解析的语句> ")
+
+if __name__ == '__main__':
+    line = raw_input("请输入要解析的语句> ")
+    Trie.parse_query(line)
+    line = raw_input("请输入要解析的语句> ")
