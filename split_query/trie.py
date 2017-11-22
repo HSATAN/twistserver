@@ -87,7 +87,7 @@ class Trie(object):
 
             le = 0
             try:
-                f = open('twistserver/split_query/model.txt')
+                f = open('model.txt')
                 Trie.trie_dict = json.load(f)
                 print('加载模型成功')
             except Exception as e:

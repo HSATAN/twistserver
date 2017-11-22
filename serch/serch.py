@@ -5,7 +5,7 @@ from twisted.web.static import File
 from database.mysqldb import MysqlDB
 import json
 import logging
-
+from index_model.index import SearchIndex
 class Serch(BaseResource):
 
     def real_GET(self, request):
@@ -26,6 +26,7 @@ class Serch(BaseResource):
             for url in result:
                 item = {}
                 item['url'] = url['url'].strip('"').strip('/')
+                item['metadata'] = SearchIndex.search_index[url['url']]
                 data.append(item)
             return json.dumps(data)
 
