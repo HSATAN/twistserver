@@ -42,3 +42,31 @@ intT = Two()
 print(intT.temp)
 intT.temp = 200
 print(intT._temp)
+
+import random
+import time
+def fib(n):
+    index = 0
+    a = 0
+    b = 1
+    while index < n:
+        data = yield b
+        print(data)
+        a, b = b, a + b
+        index += 1
+sfib = fib(20)
+
+flag = 0
+while flag < 20:
+    if(flag == 0):
+        sfib.send(None)
+    else:
+        print(sfib.send(random.uniform(0, 0.9)))
+    flag += 1
+print(flag)
+import gevent
+
+def task(url):
+    print(url)
+
+gevent.joinall([gevent.spawn(task, "http://www.myenger.com")])
