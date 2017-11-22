@@ -1,51 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script type="text/javascript" src="https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/jquery/jquery-1.10.2.min_65682a2.js"></script>
-    <meta charset="UTF-8">
-    <title>搜索测试</title>
-</head>
-<body>
-<style>
-    .div3{
-        text-align:center
-    }
-    .div2{
-        text-align: center;
-        height: 30px;
-        margin:0 auto;
-    }
-    .div1{
-        margin-left: 40px;
-    }
-    #result{
-        margin-top: 20px;
-    }
-    .logo{
-        float: left;
-    }
-    #su{
-        height: 28px;
-    }
-    .item{
-        margin-top: 20px;
-        display:block;
+<html><head><title>web.Server Traceback (most recent call last)</title></head><body><b>web.Server Traceback (most recent call last):</b>
+
+<div>
+  <style type="text/css">
+    div.error {
+      color: red;
+      font-family: Verdana, Arial, helvetica, sans-serif;
+      font-weight: bold;
     }
 
-</style>
-<script src="/static/js/search.js">
-</script>
-<div class="div2"></div>
-<div class="div1">
-<img src="/logo", class="logo" style="margin-right: 10px">
-<form id="form" name="f" class="fm"  onsubmit="return false">
-    <input type="hidden" name="ie" value="utf-8">
-    <input style="width: 300px" id="kw" name="word" class="s_ipt" value="" maxlength="255" autocomplete="off">
-    <input  type="submit" id="su" value="搜索测试" class="bg s_btn" onclick=" return load_document()">
+    div {
+      font-family: Verdana, Arial, helvetica, sans-serif;
+    }
 
-</form>
+    div.stackTrace {
+    }
+
+    div.frame {
+      padding: 1em;
+      background: white;
+      border-bottom: thin black dashed;
+    }
+
+    div.frame:first-child {
+      padding: 1em;
+      background: white;
+      border-top: thin black dashed;
+      border-bottom: thin black dashed;
+    }
+
+    div.location {
+    }
+
+    span.function {
+      font-weight: bold;
+      font-family: "Courier New", courier, monospace;
+    }
+
+    div.snippet {
+      margin-bottom: 0.5em;
+      margin-left: 1em;
+      background: #FFFFDD;
+    }
+
+    div.snippetHighlightLine {
+      color: red;
+    }
+
+    span.code {
+      font-family: "Courier New", courier, monospace;
+    }
+  </style>
+
+  <div class="error">
+    <span>exceptions.KeyError</span>: <span>u'http://www.fj.chinanews.com/'</span>
+  </div>
+  <div class="stackTrace">
+    <div class="frame">
+      <div class="location">
+        <span>/usr/lib64/python2.7/site-packages/twisted/web/server.py</span>:<span>184</span> in
+        <span class="function">process</span>
+      </div>
+      <div class="snippet">
+        <div class="snippetLine">
+          <span class="lineno">183</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;self._encoder = encoder</code>
+        </div><div class="snippetHighlightLine">
+          <span class="lineno">184</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160;self.render(resrc)</code>
+        </div><div class="snippetLine">
+          <span class="lineno">185</span>
+          <code class="code"> &#160; &#160; &#160; &#160;except:</code>
+        </div>
+      </div>
+    </div><div class="frame">
+      <div class="location">
+        <span>/usr/lib64/python2.7/site-packages/twisted/web/server.py</span>:<span>235</span> in
+        <span class="function">render</span>
+      </div>
+      <div class="snippet">
+        <div class="snippetLine">
+          <span class="lineno">234</span>
+          <code class="code"> &#160; &#160; &#160; &#160;try:</code>
+        </div><div class="snippetHighlightLine">
+          <span class="lineno">235</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160;body = resrc.render(self)</code>
+        </div><div class="snippetLine">
+          <span class="lineno">236</span>
+          <code class="code"> &#160; &#160; &#160; &#160;except UnsupportedMethod as e:</code>
+        </div>
+      </div>
+    </div><div class="frame">
+      <div class="location">
+        <span>/usr/lib64/python2.7/site-packages/twisted/web/resource.py</span>:<span>250</span> in
+        <span class="function">render</span>
+      </div>
+      <div class="snippet">
+        <div class="snippetLine">
+          <span class="lineno">249</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160;raise UnsupportedMethod(allowedMethods)</code>
+        </div><div class="snippetHighlightLine">
+          <span class="lineno">250</span>
+          <code class="code"> &#160; &#160; &#160; &#160;return m(request)</code>
+        </div><div class="snippetLine">
+          <span class="lineno">251</span>
+          <code class="code"></code>
+        </div>
+      </div>
+    </div><div class="frame">
+      <div class="location">
+        <span>/home/twistserver/twistserver/baseresource/greenresource.py</span>:<span>28</span> in
+        <span class="function">handler</span>
+      </div>
+      <div class="snippet">
+        <div class="snippetLine">
+          <span class="lineno">27</span>
+          <code class="code"></code>
+        </div><div class="snippetHighlightLine">
+          <span class="lineno">28</span>
+          <code class="code"> &#160; &#160; &#160; &#160;return func(*args, **kwargs)</code>
+        </div><div class="snippetLine">
+          <span class="lineno">29</span>
+          <code class="code"> &#160; &#160;return handler</code>
+        </div>
+      </div>
+    </div><div class="frame">
+      <div class="location">
+        <span>/home/twistserver/twistserver/baseresource/greenresource.py</span>:<span>42</span> in
+        <span class="function">render_GET</span>
+      </div>
+      <div class="snippet">
+        <div class="snippetLine">
+          <span class="lineno">41</span>
+          <code class="code"> &#160; &#160;def render_GET(self, request):</code>
+        </div><div class="snippetHighlightLine">
+          <span class="lineno">42</span>
+          <code class="code"> &#160; &#160; &#160; &#160;return self.real_GET(request)</code>
+        </div><div class="snippetLine">
+          <span class="lineno">43</span>
+          <code class="code"> &#160; &#160; &#160; &#160;pass</code>
+        </div>
+      </div>
+    </div><div class="frame">
+      <div class="location">
+        <span>/home/twistserver/twistserver/serch/serch.py</span>:<span>29</span> in
+        <span class="function">real_GET</span>
+      </div>
+      <div class="snippet">
+        <div class="snippetLine">
+          <span class="lineno">28</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;item['url'] = url['url'].strip('"').strip('/')</code>
+        </div><div class="snippetHighlightLine">
+          <span class="lineno">29</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;item['metadata'] = SearchIndex.search_index[url['url']]</code>
+        </div><div class="snippetLine">
+          <span class="lineno">30</span>
+          <code class="code"> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;data.append(item)</code>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="error">
+    <span>exceptions.KeyError</span>: <span>u'http://www.fj.chinanews.com/'</span>
+  </div>
+</div>
 
-<div id="result" class="div1"></div>
-</body>
-</html>
+</body></html>
