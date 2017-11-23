@@ -3,39 +3,42 @@
 from lxml import etree
 from database.mysqldb import MysqlDB
 from index_model.index import SearchIndex
+import logging
+import json
 
 
 class ProcessDocument(object):
 
     @classmethod
     def parse_document(cls, document,url):
-        if document:
-            html = etree.HTML(document)
-            title = html.xpath("//title/text()")
-            if title:
-                title = ','.join(title)
-            description = html.xpath('//meta[@name="description"]/@content')
-            if description:
-                description = ','.join(description)
-            print(description)
-            SearchIndex.add_index(url.strip(), {'title': title if title else None,
-                                                'metadata': description if description else None})
+        try:
+            if document:
+                html = etree.HTML(document)
+                title = html.xpath("//title/text()")
+                if title:
+                    title = ','.join(title)
+                description = html.xpath('//meta[@name="description"]/@content')
+                if description:
+                    description = ','.join(description)
+                print(description)
+                SearchIndex.add_index(url.strip(), {'title': title if title else None,
+                                                    'metadata': description if description else None})
+        except Exception as e:
+            logging.error("parse document error %s " % e)
     @classmethod
     def create_index(cls):
-        total = 0
-        gap = 3
-        sql = 'select url, html from document limit  %s,%s' % (total, total+gap)
+        try:
+            with open('index_model.txt') as model:
 
-        results = MysqlDB.run_query(sql)
-        if results:
-            while results and total < 10:
+                SearchIndex.search_index = json.load(model)
+
+        except Exception as e:
+            logging.error("load search_index model error %s" % e)
+            sql = 'select url, html from document'
+            results = MysqlDB.run_query(sql)
+            if results:
                 for result in results:
                     ProcessDocument.parse_document(result['html'], result['url'])
-                total = total + gap
-                sql = 'select url, html from document limit  %s,%s' % (total, total + gap)
-                results = MysqlDB.run_query(sql)
+            with open('index_model.txt', 'w') as f:
+                f.write(json.dumps(SearchIndex.search_index))
 ProcessDocument.create_index()
-for key, value in  SearchIndex.search_index.items():
-    print(key)
-    for metadata, v in value.items():
-        print('\t %s: %s' % (metadata, v))

@@ -46,7 +46,10 @@ class MysqlDB(object):
             return cls.cursor.fetchall()
         except Exception as e:
             logging.error(e)
-            cls.error()
+            try:
+                cls.error()
+            except:
+                pass
 
     @classmethod
     def query_all(cls, operate):
