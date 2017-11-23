@@ -27,7 +27,7 @@ class Serch(BaseResource):
                 item = {}
                 item['url'] = url['url'].strip('"').strip('/')
                 try:
-                    item['metadata'] = SearchIndex.search_index[url['url']]
+                    item['abstract'] = SearchIndex.search_index[url['url']]
                 except Exception as e:
                     logging.error("get metadata error %s" % e)
                 data.append(item)
