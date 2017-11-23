@@ -117,9 +117,12 @@ class third(Resource):
 
 if __name__ == '__main__':
     logfile = 'log'
+    from processhtml.process_document import ProcessDocument
+    ProcessDocument.create_index()
     try:
         import platform
-        if platform.system().lower() != 'windows':
+        if 'linux' in platform.system().lower():
+
             logfile = '/home/log/twistserverlog/log'
     except:
         pass
