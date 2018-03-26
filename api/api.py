@@ -1,8 +1,8 @@
 # _*_ coding:utf-8 _*_
 
-from account.login import Login
+from api.account.login import Login
 from baseresource.greenresource import BaseResource
-from weixin.auth import AuthWeiXin
+from api.weixin.auth import AuthWeiXin
 class Api(BaseResource):
 
     def __init__(self):
