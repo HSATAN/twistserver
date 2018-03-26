@@ -1,6 +1,6 @@
 # _*_ coding: utf8 _*_
-MYSQL_HOST = '47.93.5.189'
+MYSQL_HOST = '39.107.240.28'
 MYSQL_PORT = 3306
-MYSQL_PASSWORD = 'edison'
+MYSQL_PASSWORD = 'hkj520XLR.'
 MYSQL_USER = 'root'
-MYSQL_DATABASE = 'serchdocment'
+MYSQL_DATABASE = 'serch'
