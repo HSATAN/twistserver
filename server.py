@@ -117,8 +117,11 @@ class third(Resource):
 
 if __name__ == '__main__':
     logfile = 'log'
-    from processhtml.process_document import ProcessDocument
-    ProcessDocument.create_index()
+    try:
+        from processhtml.process_document import ProcessDocument
+        ProcessDocument.create_index()
+    except:
+        pass
     try:
         import platform
         if 'linux' in platform.system().lower():
