@@ -116,11 +116,11 @@ class third(Resource):
 
 if __name__ == '__main__':
     logfile = 'log'
-    try:
-        from processhtml.process_document import ProcessDocument
-        ProcessDocument.create_index()
-    except:
-        pass
+    # try:
+    #     from processhtml.process_document import ProcessDocument
+    #     ProcessDocument.create_index()
+    # except:
+    #     pass
     try:
         import platform
         if 'linux' in platform.system().lower():
@@ -130,5 +130,5 @@ if __name__ == '__main__':
         pass
     formats = '[%(asctime)s] [%(filename)s L%(lineno)d] [%(levelname)s] %(message)s'
     logging.basicConfig(level=logging.INFO, format=formats, filename=logfile)
-    reactor.listenTCP(8888, Site(Root()))
+    reactor.listenTCP(8888, Site(third()))
     reactor.run()
