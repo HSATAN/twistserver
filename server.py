@@ -111,7 +111,7 @@ class UserInfo(Resource):
 
 class third(Resource):
 
-    ifLeaf = True
+    isLeaf = True
     def render_GET(self,request):
         return "third"
 
