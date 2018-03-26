@@ -113,7 +113,7 @@ class third(Resource):
 
     isLeaf = True
     def render_GET(self,request):
-        return "third"
+        return bytes("third")
 
 if __name__ == '__main__':
     logfile = 'log'
