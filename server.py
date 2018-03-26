@@ -113,8 +113,8 @@ class third(Resource):
 
     isLeaf = True
     def render_GET(self,request):
-        self.write({'name': '黄开杰'})
-        self.finish()
+        request.write({'name': '黄开杰'})
+        request.finish()
 
 if __name__ == '__main__':
     logfile = 'log'
