@@ -1,13 +1,12 @@
 # _*_ coding:utf-8 _*_
-
-from __future__ import print_function
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 from twisted.internet import reactor
 from twisted.web.resource import Resource
 from twisted.web.server import Site
-from database.conn import PsyBase
+try:
+    from database.conn import PsyBase
+except:
+    pass
 import json
 import config
 import logging
